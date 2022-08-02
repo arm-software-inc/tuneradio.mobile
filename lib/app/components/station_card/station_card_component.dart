@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:radiao/app/bloc/radio_bloc.dart';
-import 'package:radiao/app/models/station.dart';
+import 'package:tune_radio/app/bloc/radio_bloc.dart';
+import 'package:tune_radio/app/models/station.dart';
 
 class StationCardComponent extends StatelessWidget {
-  const StationCardComponent({ Key? key, required this.station }) : super(key: key);
+  const StationCardComponent({Key? key, required this.station})
+      : super(key: key);
 
   final Station station;
 
@@ -38,16 +39,22 @@ class StationCardComponent extends StatelessWidget {
                     )
                   : null,
             ),
-            const SizedBox(width: 10,),
+            const SizedBox(
+              width: 10,
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(station.name.trim()),
-                  Text(station.formattedTags, style: const TextStyle(color: Colors.grey)),
+                  Text(station.formattedTags,
+                      style: const TextStyle(color: Colors.grey)),
                   Row(
                     children: [
-                      const Icon(Icons.favorite, color: Colors.red,),
+                      const Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      ),
                       const SizedBox(width: 5),
                       Text(station.votes.toString())
                     ],

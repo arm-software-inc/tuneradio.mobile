@@ -50,7 +50,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.radiao.radiao"
+        applicationId "com.tune_radio.tune_radio"
         minSdkVersion 16
         targetSdkVersion 30
         multiDexEnabled = true

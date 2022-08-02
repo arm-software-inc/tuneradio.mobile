@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:radiao/app/bloc/radio_bloc.dart';
-import 'package:radiao/app/bloc/radio_state.dart';
-import 'package:radiao/app/helpers/constants.dart';
+import 'package:tune_radio/app/bloc/radio_bloc.dart';
+import 'package:tune_radio/app/bloc/radio_state.dart';
+import 'package:tune_radio/app/helpers/constants.dart';
 
 class PlayerComponent extends StatefulWidget {
   const PlayerComponent({Key? key}) : super(key: key);
@@ -75,7 +75,9 @@ class PlayerComponentState extends State<PlayerComponent> {
     return Container(
       padding: const EdgeInsets.all(5),
       child: FittedBox(
-        child: coverUrl.isEmpty ? const Icon(Icons.radio) : Image.network(coverUrl),
+        child: coverUrl.isEmpty
+            ? const Icon(Icons.radio)
+            : Image.network(coverUrl),
       ),
     );
   }

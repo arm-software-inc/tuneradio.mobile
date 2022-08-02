@@ -1,12 +1,13 @@
 import 'package:bloc/bloc.dart';
-import 'package:radiao/app/models/history.dart';
-import 'package:radiao/app/models/station.dart';
-import 'package:radiao/app/pages/explorer/explorer_state.dart';
-import 'package:radiao/app/repository/history_repository.dart';
-import 'package:radiao/app/repository/radio_repository.dart';
+import 'package:tune_radio/app/models/history.dart';
+import 'package:tune_radio/app/models/station.dart';
+import 'package:tune_radio/app/pages/explorer/explorer_state.dart';
+import 'package:tune_radio/app/repository/history_repository.dart';
+import 'package:tune_radio/app/repository/radio_repository.dart';
 
 class ExplorerBloc extends Cubit<ExplorerState> {
-  ExplorerBloc(this._repository, this._historyRepository) : super(InitialState());
+  ExplorerBloc(this._repository, this._historyRepository)
+      : super(InitialState());
 
   final RadioRepository _repository;
   final HistoryRepository _historyRepository;
@@ -23,7 +24,7 @@ class ExplorerBloc extends Cubit<ExplorerState> {
     } else {
       results = await _repository.searchStations(text);
     }
-    
+
     results.isEmpty ? emit(ResultEmpty()) : emit(LoadedState(results));
   }
 

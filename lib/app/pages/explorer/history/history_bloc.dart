@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:radiao/app/pages/explorer/history/history_state.dart';
-import 'package:radiao/app/repository/history_repository.dart';
+import 'package:tune_radio/app/pages/explorer/history/history_state.dart';
+import 'package:tune_radio/app/repository/history_repository.dart';
 
 class HistoryBloc extends Cubit<HistoryState> {
   final HistoryRepository _repository;

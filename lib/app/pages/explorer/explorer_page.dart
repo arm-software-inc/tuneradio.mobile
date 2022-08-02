@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:radiao/app/components/loading/loading_component.dart';
-import 'package:radiao/app/components/station_card/station_card_component.dart';
-import 'package:radiao/app/helpers/constants.dart';
-import 'package:radiao/app/pages/explorer/explorer_bloc.dart';
-import 'package:radiao/app/pages/explorer/explorer_state.dart';
-import 'package:radiao/app/pages/explorer/history/history_component.dart';
-import 'package:radiao/app/repository/history_repository.dart';
-import 'package:radiao/app/repository/radio_repository.dart';
+import 'package:tune_radio/app/components/loading/loading_component.dart';
+import 'package:tune_radio/app/components/station_card/station_card_component.dart';
+import 'package:tune_radio/app/helpers/constants.dart';
+import 'package:tune_radio/app/pages/explorer/explorer_bloc.dart';
+import 'package:tune_radio/app/pages/explorer/explorer_state.dart';
+import 'package:tune_radio/app/pages/explorer/history/history_component.dart';
+import 'package:tune_radio/app/repository/history_repository.dart';
+import 'package:tune_radio/app/repository/radio_repository.dart';
 
 class ExplorerPage extends StatefulWidget {
   const ExplorerPage({Key? key}) : super(key: key);
@@ -30,7 +30,10 @@ class ExplorerPageState extends State<ExplorerPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(Constants.explorer, style: TextStyle(fontSize: 28),),
+        const Text(
+          Constants.explorer,
+          style: TextStyle(fontSize: 28),
+        ),
         const SizedBox(height: 15),
         TextFormField(
           onFieldSubmitted: (text) => _bloc.search(text),
@@ -58,7 +61,8 @@ class ExplorerPageState extends State<ExplorerPage> {
               return Expanded(
                 child: ListView.builder(
                   itemCount: stations.length,
-                  itemBuilder: (_, index) => StationCardComponent(station: stations[index]),
+                  itemBuilder: (_, index) =>
+                      StationCardComponent(station: stations[index]),
                 ),
               );
             }

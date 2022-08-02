@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:radiao/app/models/station.dart';
+import 'package:tune_radio/app/models/station.dart';
 
 abstract class RadioState extends Equatable {}
 

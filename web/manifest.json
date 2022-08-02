@@ -1,6 +1,6 @@
 {
-    "name": "radiao",
-    "short_name": "radiao",
+    "name": "tune_radio",
+    "short_name": "tune_radio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

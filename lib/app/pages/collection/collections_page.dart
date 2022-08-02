@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:radiao/app/components/loading/loading_component.dart';
-import 'package:radiao/app/helpers/constants.dart';
-import 'package:radiao/app/models/station_collection.dart';
-import 'package:radiao/app/pages/collection/collection_page.dart';
-import 'package:radiao/app/pages/collection/collections_bloc.dart';
-import 'package:radiao/app/pages/collection/collections_state.dart';
+import 'package:tune_radio/app/components/loading/loading_component.dart';
+import 'package:tune_radio/app/helpers/constants.dart';
+import 'package:tune_radio/app/models/station_collection.dart';
+import 'package:tune_radio/app/pages/collection/collection_page.dart';
+import 'package:tune_radio/app/pages/collection/collections_bloc.dart';
+import 'package:tune_radio/app/pages/collection/collections_state.dart';
 
 class CollectionsPage extends StatefulWidget {
-  const CollectionsPage({ Key? key }) : super(key: key);
+  const CollectionsPage({Key? key}) : super(key: key);
 
   @override
   CollectionsPageState createState() => CollectionsPageState();
@@ -21,7 +21,7 @@ class CollectionsPageState extends State<CollectionsPage> {
   Widget build(BuildContext context) {
     _bloc = context.read<CollectionsBloc>();
     _bloc?.fetch();
-    
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showNewCollection(),
@@ -30,7 +30,10 @@ class CollectionsPageState extends State<CollectionsPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(Constants.collections, style: TextStyle(fontSize: 28),),
+          const Text(
+            Constants.collections,
+            style: TextStyle(fontSize: 28),
+          ),
           Expanded(
             child: BlocBuilder<CollectionsBloc, CollectionsState>(
               bloc: _bloc,
@@ -54,8 +57,9 @@ class CollectionsPageState extends State<CollectionsPage> {
       itemBuilder: (_, index) => ListTile(
         onTap: () {
           Navigator.of(context).pushNamed(
-            "/collection", 
-            arguments: CollectionPageParams(collections[index].id!, collections[index].name),
+            "/collection",
+            arguments: CollectionPageParams(
+                collections[index].id!, collections[index].name),
           );
         },
         leading: const Icon(Icons.radio),

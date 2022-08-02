@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:radiao/app/components/station_list_item/station_list_item_component.dart';
-import 'package:radiao/app/components/trending/trending_bloc.dart';
-import 'package:radiao/app/components/trending/trending_state.dart';
-import 'package:radiao/app/repository/radio_repository.dart';
+import 'package:tune_radio/app/components/station_list_item/station_list_item_component.dart';
+import 'package:tune_radio/app/components/trending/trending_bloc.dart';
+import 'package:tune_radio/app/components/trending/trending_state.dart';
+import 'package:tune_radio/app/repository/radio_repository.dart';
 import 'package:shimmer/shimmer.dart';
 
 class TrendingComponent extends StatefulWidget {
-  const TrendingComponent({ Key? key }) : super(key: key);
+  const TrendingComponent({Key? key}) : super(key: key);
 
   @override
   TrendingComponentState createState() => TrendingComponentState();
@@ -32,7 +32,8 @@ class TrendingComponentState extends State<TrendingComponent> {
           return ListView.builder(
             itemCount: stations.length,
             scrollDirection: Axis.horizontal,
-            itemBuilder: (_, index) => StationListItemComponent(station: stations[index]),
+            itemBuilder: (_, index) =>
+                StationListItemComponent(station: stations[index]),
           );
         }
 
@@ -40,15 +41,15 @@ class TrendingComponentState extends State<TrendingComponent> {
           baseColor: Theme.of(context).backgroundColor,
           highlightColor: Colors.purpleAccent,
           child: ListView.builder(
-            itemCount: 20,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (_, index) => Container(
-              width: 150,
-              height: 150,
-              margin: const EdgeInsets.only(top: 10, bottom: 10, right: 10),
-              color: Colors.grey,
-            )
-          ),
+              itemCount: 20,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (_, index) => Container(
+                    width: 150,
+                    height: 150,
+                    margin:
+                        const EdgeInsets.only(top: 10, bottom: 10, right: 10),
+                    color: Colors.grey,
+                  )),
         );
       },
     );

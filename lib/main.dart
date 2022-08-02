@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:radiao/app/bloc/radio_bloc.dart';
-import 'package:radiao/app/custom_theme.dart';
-import 'package:radiao/app/pages/collection/collection_bloc.dart';
-import 'package:radiao/app/pages/collection/collection_page.dart';
-import 'package:radiao/app/pages/collection/collections_bloc.dart';
-import 'package:radiao/app/pages/main_page.dart';
-import 'package:radiao/app/pages/player/player_page.dart';
-import 'package:radiao/app/repository/collection_item_repository.dart';
-import 'package:radiao/app/repository/collection_repository.dart';
-import 'package:radiao/app/repository/radio_repository.dart';
+import 'package:tune_radio/app/bloc/radio_bloc.dart';
+import 'package:tune_radio/app/custom_theme.dart';
+import 'package:tune_radio/app/pages/collection/collection_bloc.dart';
+import 'package:tune_radio/app/pages/collection/collection_page.dart';
+import 'package:tune_radio/app/pages/collection/collections_bloc.dart';
+import 'package:tune_radio/app/pages/main_page.dart';
+import 'package:tune_radio/app/pages/player/player_page.dart';
+import 'package:tune_radio/app/repository/collection_item_repository.dart';
+import 'package:tune_radio/app/repository/collection_repository.dart';
+import 'package:tune_radio/app/repository/radio_repository.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -29,19 +29,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<RadioBloc>(create: (_) => RadioBloc(repository: RadioRepository())),
-        Provider(create: (_) => CollectionsBloc(CollectionRepository(), CollectionItemRepository())),
-        Provider(create: (_) => CollectionBloc(CollectionItemRepository(), RadioRepository())),
+        Provider<RadioBloc>(
+            create: (_) => RadioBloc(repository: RadioRepository())),
+        Provider(
+            create: (_) => CollectionsBloc(
+                CollectionRepository(), CollectionItemRepository())),
+        Provider(
+            create: (_) =>
+                CollectionBloc(CollectionItemRepository(), RadioRepository())),
       ],
       child: MaterialApp(
-        title: 'Radiao',
+        title: 'tune_radio',
         theme: CustomTheme.defaultTheme(),
         initialRoute: "/",
         onGenerateRoute: (settings) {
           final routes = {
             "/": MaterialPageRoute(builder: (_) => const MainPage()),
             "/player": MaterialPageRoute(builder: (_) => const PlayerPage()),
-            "/collection": MaterialPageRoute(builder: (_) => CollectionPage(params: settings.arguments as CollectionPageParams,)),
+            "/collection": MaterialPageRoute(
+                builder: (_) => CollectionPage(
+                      params: settings.arguments as CollectionPageParams,
+                    )),
           };
 
           return routes[settings.name];

@@ -1,6 +1,6 @@
-# radiao
+# tune_radio
 
-Radiao is a radio explorer app that lets you listen to several stations of various countries.
+tune_radio is a radio explorer app that lets you listen to several stations of various countries.
 
 ## features
 

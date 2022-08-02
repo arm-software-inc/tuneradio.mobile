@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:radiao/app/components/listening_now/listening_now_component.dart';
-import 'package:radiao/app/components/popular/popular_component.dart';
-import 'package:radiao/app/components/trending/trending_component.dart';
-import 'package:radiao/app/helpers/constants.dart';
+import 'package:tune_radio/app/components/listening_now/listening_now_component.dart';
+import 'package:tune_radio/app/components/popular/popular_component.dart';
+import 'package:tune_radio/app/components/trending/trending_component.dart';
+import 'package:tune_radio/app/helpers/constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-
   @override
   void initState() {
     super.initState();

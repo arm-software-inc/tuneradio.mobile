@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:radiao/app/models/station_collection.dart';
+import 'package:tune_radio/app/models/station_collection.dart';
 
 abstract class CollectionsState extends Equatable {}
 
