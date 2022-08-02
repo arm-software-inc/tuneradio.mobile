@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radiao/app/components/loading/loading_component.dart';
+import 'package:radiao/app/components/player/player_component.dart';
 import 'package:radiao/app/components/station_card/station_card_component.dart';
 import 'package:radiao/app/helpers/constants.dart';
 import 'package:radiao/app/models/station.dart';
@@ -14,10 +15,10 @@ class CollectionPage extends StatefulWidget {
   const CollectionPage({ Key? key, required this.params, }) : super(key: key);
 
   @override
-  _CollectionPageState createState() => _CollectionPageState();
+  CollectionPageState createState() => CollectionPageState();
 }
 
-class _CollectionPageState extends State<CollectionPage> {
+class CollectionPageState extends State<CollectionPage> {
   late CollectionBloc _bloc;
   late CollectionsBloc _collectionsBloc;
 
@@ -42,8 +43,7 @@ class _CollectionPageState extends State<CollectionPage> {
         ],
       ),
       body: SafeArea(
-        child: Column( //TODO: remover column nao necessario
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
           children: [
             Expanded(
               child: BlocBuilder<CollectionBloc, CollectionState>(
@@ -55,6 +55,10 @@ class _CollectionPageState extends State<CollectionPage> {
                   return const LoadingComponent();
                 },
               ),
+            ),
+            Container(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: const PlayerComponent(),
             ),
           ],
         ),
