@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:radiao/app/components/category_tile/category_tile_component.dart';
 import 'package:radiao/app/components/loading/loading_component.dart';
 import 'package:radiao/app/components/station_card/station_card_component.dart';
 import 'package:radiao/app/helpers/constants.dart';
@@ -15,10 +13,10 @@ class ExplorerPage extends StatefulWidget {
   const ExplorerPage({Key? key}) : super(key: key);
 
   @override
-  _ExplorerPageState createState() => _ExplorerPageState();
+  ExplorerPageState createState() => ExplorerPageState();
 }
 
-class _ExplorerPageState extends State<ExplorerPage> {
+class ExplorerPageState extends State<ExplorerPage> {
   final _bloc = ExplorerBloc(RadioRepository(), HistoryRepository());
   final _textController = TextEditingController();
 
@@ -33,6 +31,7 @@ class _ExplorerPageState extends State<ExplorerPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(Constants.explorer, style: TextStyle(fontSize: 28),),
+        const SizedBox(height: 15),
         TextFormField(
           onFieldSubmitted: (text) => _bloc.search(text),
           controller: _textController,
@@ -49,7 +48,7 @@ class _ExplorerPageState extends State<ExplorerPage> {
           ),
         ),
         const SizedBox(
-          height: 10,
+          height: 15,
         ),
         BlocBuilder<ExplorerBloc, ExplorerState>(
           bloc: _bloc,

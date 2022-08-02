@@ -9,10 +9,10 @@ class PlayerComponent extends StatefulWidget {
   const PlayerComponent({Key? key}) : super(key: key);
 
   @override
-  _PlayerComponentState createState() => _PlayerComponentState();
+  PlayerComponentState createState() => PlayerComponentState();
 }
 
-class _PlayerComponentState extends State<PlayerComponent> {
+class PlayerComponentState extends State<PlayerComponent> {
   RadioBloc? _bloc;
 
   @override
@@ -28,26 +28,25 @@ class _PlayerComponentState extends State<PlayerComponent> {
             onTap: () {
               Navigator.of(context).pushNamed("/player");
             },
-            child: Container(
-              padding: const EdgeInsets.all(5),
-              width: MediaQuery.of(context).size.width,
-              color: Theme.of(context).backgroundColor.withOpacity(1),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _cover(station.favicon),
-                  Flexible(
-                    child: Center(child: Text(station.name, overflow: TextOverflow.ellipsis,)),
-                  ),
-                  _playButton(state),
-                ],
-              ),
+            child: ListTile(
+              leading: _cover(station.favicon),
+              title: Text(station.name),
+              trailing: _playButton(state),
             ),
           );
         }
 
-        if (state is LoadingState) return _infoPlayer(Constants.loading);
-        if (state is ErrorState) return _infoPlayer(Constants.error);
+        if (state is LoadingState) {
+          return const ListTile(
+            title: Text(Constants.loading),
+          );
+        }
+
+        if (state is ErrorState) {
+          return const ListTile(
+            title: Text(Constants.error),
+          );
+        }
 
         return Container();
       },
@@ -80,35 +79,9 @@ class _PlayerComponentState extends State<PlayerComponent> {
 
   Widget _cover(String coverUrl) {
     return Container(
-      width: 50,
-      height: 50,
-      child: coverUrl.isEmpty ? const Icon(Icons.radio) : null,
-      decoration: coverUrl.isEmpty
-          ? const BoxDecoration()
-          : BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(coverUrl),
-              ),
-            ),
-    );
-  }
-
-  Widget _infoPlayer(String message) {
-    return Container(
       padding: const EdgeInsets.all(5),
-      width: MediaQuery.of(context).size.width,
-      color: Theme.of(context).backgroundColor.withOpacity(1),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _cover(""),
-          Column(
-            children: [
-              Text(message),
-            ],
-          ),
-          Container(),
-        ],
+      child: FittedBox(
+        child: coverUrl.isEmpty ? const Icon(Icons.radio) : Image.network(coverUrl),
       ),
     );
   }
