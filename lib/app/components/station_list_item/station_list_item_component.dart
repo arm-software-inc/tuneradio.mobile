@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:radiao/app/bloc/radio_bloc.dart';
-import 'package:radiao/app/custom_theme.dart';
 import 'package:radiao/app/models/station.dart';
 
 class StationListItemComponent extends StatelessWidget {
@@ -26,7 +25,6 @@ class StationListItemComponent extends StatelessWidget {
             height: 130,
             margin: const EdgeInsets.only(top: 10, bottom: 10, right: 10),
             decoration: BoxDecoration(
-              color: CustomTheme.stationBackground,
               image: station.favicon.isEmpty
                   ? null
                   : DecorationImage(

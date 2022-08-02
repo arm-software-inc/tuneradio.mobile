@@ -10,10 +10,10 @@ class PopularComponent extends StatefulWidget {
   const PopularComponent({Key? key}) : super(key: key);
 
   @override
-  _PopularComponentState createState() => _PopularComponentState();
+  PopularComponentState createState() => PopularComponentState();
 }
 
-class _PopularComponentState extends State<PopularComponent> {
+class PopularComponentState extends State<PopularComponent> {
   PopularBloc? _bloc;
 
   @override

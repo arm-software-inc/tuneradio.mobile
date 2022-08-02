@@ -1,11 +1,47 @@
 import 'package:flutter/material.dart';
 
 class CustomTheme {
-  static List<Color> get buttomGradient => [
-    const Color(0xAA4D1ABC).withOpacity(.5),
-    Colors.purpleAccent.withOpacity(.5),
-    Colors.purpleAccent,
-  ];
+  static ThemeData defaultTheme() {
+    final backgroundColor = const Color(0xAA251356).withOpacity(1);
 
-  static Color get stationBackground => Colors.purpleAccent.withOpacity(.05);
+    return ThemeData(
+      primarySwatch: Colors.blue,
+      brightness: Brightness.dark,
+      backgroundColor: backgroundColor,
+      scaffoldBackgroundColor: backgroundColor,
+      iconTheme: const IconThemeData(
+        color: Colors.purpleAccent,
+      ),
+      appBarTheme: AppBarTheme(
+        backgroundColor: backgroundColor,
+        actionsIconTheme: const IconThemeData(
+          color: Colors.purpleAccent,
+        ),   
+        iconTheme: const IconThemeData(
+          color: Colors.purpleAccent,
+        ),
+        elevation: 0,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      snackBarTheme: const SnackBarThemeData(
+        backgroundColor: Colors.purple,
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        backgroundColor: backgroundColor,
+        selectedIconTheme: const IconThemeData(
+          color: Colors.purpleAccent,
+        ),
+        unselectedIconTheme: const IconThemeData(
+          color: Colors.deepPurple,
+        ),
+      ),
+    );
+  }
 }

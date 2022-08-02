@@ -11,10 +11,10 @@ class CollectionsPage extends StatefulWidget {
   const CollectionsPage({ Key? key }) : super(key: key);
 
   @override
-  _CollectionsPageState createState() => _CollectionsPageState();
+  CollectionsPageState createState() => CollectionsPageState();
 }
 
-class _CollectionsPageState extends State<CollectionsPage> {
+class CollectionsPageState extends State<CollectionsPage> {
   CollectionsBloc? _bloc;
 
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:radiao/app/bloc/radio_bloc.dart';
+import 'package:radiao/app/custom_theme.dart';
 import 'package:radiao/app/pages/collection/collection_bloc.dart';
 import 'package:radiao/app/pages/collection/collection_page.dart';
 import 'package:radiao/app/pages/collection/collections_bloc.dart';
@@ -34,33 +35,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Radiao',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          brightness: Brightness.dark,
-          backgroundColor: const Color(0xAA251356).withOpacity(1),
-          scaffoldBackgroundColor: const Color(0xAA251356).withOpacity(1),
-          iconTheme: const IconThemeData(
-            color: Colors.purpleAccent,
-          ),
-          appBarTheme: AppBarTheme(
-            backgroundColor: const Color(0xAA251356).withOpacity(1),
-            actionsIconTheme: const IconThemeData(
-              color: Colors.purpleAccent,
-            ),   
-            iconTheme: const IconThemeData(
-              color: Colors.purpleAccent,
-            ),
-            elevation: 0,
-          ),
-          inputDecorationTheme: InputDecorationTheme(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          snackBarTheme: const SnackBarThemeData(
-            backgroundColor: Colors.purple,
-          ),
-        ),
+        theme: CustomTheme.defaultTheme(),
         initialRoute: "/",
         onGenerateRoute: (settings) {
           final routes = {

@@ -9,10 +9,10 @@ class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
-  _MainPageState createState() => _MainPageState();
+  MainPageState createState() => MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class MainPageState extends State<MainPage> {
   final _pageController = PageController();
   int menuIndex = 0;
 
@@ -45,37 +45,8 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  Widget _head() {
-    return Row(
-      children: [
-        const Expanded(
-            child: Text(
-          "Radiao app",
-          style: TextStyle(fontSize: 24),
-        )),
-        IconButton(
-          onPressed: () {}, 
-          icon: const Icon(Icons.settings),
-        ),
-        const CircleAvatar(
-          child: Text("A"),
-        ),
-      ],
-    );
-  }
-
   Widget _bottom(BuildContext context) {
     return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      selectedIconTheme: const IconThemeData(
-        color: Colors.purpleAccent, // TODO: botar no theme
-      ),
-      unselectedIconTheme: const IconThemeData(
-        color: Colors.deepPurple, // TODO: botar no theme
-      ),
-      backgroundColor: Theme.of(context).backgroundColor,
       currentIndex: menuIndex,
       onTap: (index) {
         _pageController.jumpToPage(index);

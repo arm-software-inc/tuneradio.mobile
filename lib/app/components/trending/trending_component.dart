@@ -10,10 +10,10 @@ class TrendingComponent extends StatefulWidget {
   const TrendingComponent({ Key? key }) : super(key: key);
 
   @override
-  _TrendingComponentState createState() => _TrendingComponentState();
+  TrendingComponentState createState() => TrendingComponentState();
 }
 
-class _TrendingComponentState extends State<TrendingComponent> {
+class TrendingComponentState extends State<TrendingComponent> {
   TrendingBloc? _bloc;
 
   @override

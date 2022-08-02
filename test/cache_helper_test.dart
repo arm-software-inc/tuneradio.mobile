@@ -23,7 +23,7 @@ void main() {
 
   test("get cache", () async {
     final res = await cache.getCache("url");
-    print(res["object"]);
+    expect(res.isNotEmpty, true);
   });
 
   test("remove cache", () async {
@@ -33,6 +33,6 @@ void main() {
   test("get httpcached", () async {
     final http = HttpCached(CacheHelper(CacheOptions(const Duration(seconds: 20))));
      final response = await http.get(Uri.parse("http://all.api.radio-browser.info/json/stations/topclick?limit=20&hidebroken=true"));
-     print(response);
+     expect(response.statusCode, 200);
   });
 }

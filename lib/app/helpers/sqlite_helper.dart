@@ -45,8 +45,6 @@ class SqliteHelper {
       """);
 
     await db.execute("insert into collections (name, created_at) values('Favoritos', ${DateTime.now().millisecondsSinceEpoch})");
-
-    print("DATABASE CREATED!");
   }
 
   static void _upgrade(Database db, int oldVersion, int newVersion) async {}

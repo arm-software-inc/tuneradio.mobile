@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/src/provider.dart';
+import 'package:provider/provider.dart';
 import 'package:radiao/app/bloc/radio_bloc.dart';
-import 'package:radiao/app/custom_theme.dart';
 import 'package:radiao/app/models/station.dart';
 
 class StationCardComponent extends StatelessWidget {
@@ -17,7 +16,7 @@ class StationCardComponent extends StatelessWidget {
         bloc.play(station);
       },
       child: Container(
-        color: CustomTheme.stationBackground, // TODO: verificar abordagem
+        color: Colors.purpleAccent.withOpacity(.05),
         margin: const EdgeInsets.only(top: 10),
         padding: const EdgeInsets.all(5),
         child: Row(

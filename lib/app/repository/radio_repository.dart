@@ -14,7 +14,7 @@ class RadioRepository {
   }
 
   Future<List<Station>> fetchByIds(List<String> stationuuids) async {
-    final commaUuids = stationuuids.reduce((value, element) => value + "," + element);
+    final commaUuids = stationuuids.reduce((value, element) => "$value,$element");
     final response = await httpBase.get(Uri.parse("$baseUrl/byuuid?uuids=$commaUuids"));
     
     if (response.statusCode != 200) throw Exception("Algo deu errado: ${response.statusCode} - ${response.reasonPhrase}");

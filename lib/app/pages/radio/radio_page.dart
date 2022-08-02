@@ -4,10 +4,10 @@ class RadioPage extends StatefulWidget {
   const RadioPage({ Key? key }) : super(key: key);
 
   @override
-  _RadioPageState createState() => _RadioPageState();
+  RadioPageState createState() => RadioPageState();
 }
 
-class _RadioPageState extends State<RadioPage> {
+class RadioPageState extends State<RadioPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

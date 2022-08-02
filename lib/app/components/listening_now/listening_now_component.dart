@@ -10,10 +10,10 @@ class ListeningNowComponent extends StatefulWidget {
   const ListeningNowComponent({ Key? key }) : super(key: key);
 
   @override
-  _ListeningNowComponentState createState() => _ListeningNowComponentState();
+  ListeningNowComponentState createState() => ListeningNowComponentState();
 }
 
-class _ListeningNowComponentState extends State<ListeningNowComponent> {
+class ListeningNowComponentState extends State<ListeningNowComponent> {
   ListeningNowBloc? _bloc;
 
   @override

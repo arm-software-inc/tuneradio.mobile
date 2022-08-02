@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radiao/app/bloc/radio_bloc.dart';
 import 'package:radiao/app/bloc/radio_state.dart';
-import 'package:radiao/app/custom_theme.dart';
 import 'package:radiao/app/helpers/constants.dart';
 
 class PlayerComponent extends StatefulWidget {
@@ -62,11 +61,6 @@ class PlayerComponentState extends State<PlayerComponent> {
       icon: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(42),
-          gradient: LinearGradient(
-            colors: CustomTheme.buttomGradient,
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
         ),
         child: Icon(
           playingState.playing ? Icons.pause_rounded : Icons.play_arrow_rounded,
