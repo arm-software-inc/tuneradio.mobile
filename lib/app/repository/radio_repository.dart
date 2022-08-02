@@ -74,6 +74,14 @@ class RadioRepository {
       .toList();
   }
 
+  Future<void> vote(String stationuuid) async {
+    await httpBase.post(Uri.parse("http://all.api.radio-browser.info/json/vote/$stationuuid"));
+  }
+
+  Future<void> click(String stationuuid) async {
+    await httpBase.post(Uri.parse("http://all.api.radio-browser.info/json/url/$stationuuid"));
+  }
+
   List<Map<String, dynamic>> convertMapList(List<dynamic> obj) {
     return obj.map((e) => e as Map<String, dynamic>).toList();
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radiao/app/bloc/radio_bloc.dart';
 import 'package:radiao/app/bloc/radio_state.dart';
+import 'package:radiao/app/components/favorite_button/favorite_button_component.dart';
 import 'package:radiao/app/helpers/constants.dart';
 
 class PlayerComponent extends StatefulWidget {
@@ -30,7 +31,13 @@ class PlayerComponentState extends State<PlayerComponent> {
             child: ListTile(
               leading: _cover(station.favicon),
               title: Text(station.name),
-              trailing: _playButton(state),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  FavoriteButtonComponent(station: station),
+                  _playButton(state),
+                ],
+              ),
             ),
           );
         }

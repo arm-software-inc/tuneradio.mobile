@@ -13,7 +13,7 @@ class SqliteHelper {
     final dbPath = await getDatabasesPath();
     _db = await openDatabase(
       "$dbPath/radiao.db", 
-      version: 1, 
+      version: 2, 
       onCreate: _create,
       onUpgrade: _upgrade,
     );
@@ -44,8 +44,26 @@ class SqliteHelper {
       created_at integer not null)
       """);
 
-    await db.execute("insert into collections (name, created_at) values('Favoritos', ${DateTime.now().millisecondsSinceEpoch})");
+    await db.execute("""create table favorite (
+      stationuuid text primary key,
+      created_at integer not null)
+      """);
+
+    await db.execute("insert into collections (name, created_at) values('Rock', ${DateTime.now().millisecondsSinceEpoch})");
+    await db.execute("insert into collections (name, created_at) values('Rap', ${DateTime.now().millisecondsSinceEpoch})");
+    await db.execute("insert into collections (name, created_at) values('Dance', ${DateTime.now().millisecondsSinceEpoch})");
   }
 
-  static void _upgrade(Database db, int oldVersion, int newVersion) async {}
+  static void _upgrade(Database db, int oldVersion, int newVersion) async {
+    if (newVersion == 2) {
+      db.transaction((txn) async {
+
+        await db.execute("""create table favorite (
+          stationuuid text primary key,
+          created_at integer not null)
+          """);
+          
+      });
+    }
+  }
 }

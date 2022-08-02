@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:radiao/app/bloc/radio_bloc.dart';
+import 'package:radiao/app/components/favorite_button/bloc/favorite_button_bloc.dart';
 import 'package:radiao/app/custom_theme.dart';
 import 'package:radiao/app/pages/collection/collection_bloc.dart';
 import 'package:radiao/app/pages/collection/collection_page.dart';
@@ -9,6 +10,7 @@ import 'package:radiao/app/pages/main_page.dart';
 import 'package:radiao/app/pages/player/player_page.dart';
 import 'package:radiao/app/repository/collection_item_repository.dart';
 import 'package:radiao/app/repository/collection_repository.dart';
+import 'package:radiao/app/repository/favorite_repository.dart';
 import 'package:radiao/app/repository/radio_repository.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
         Provider<RadioBloc>(create: (_) => RadioBloc(repository: RadioRepository())),
         Provider(create: (_) => CollectionsBloc(CollectionRepository(), CollectionItemRepository())),
         Provider(create: (_) => CollectionBloc(CollectionItemRepository(), RadioRepository())),
+        Provider(create: (context) => FavoriteButtonBloc(FavoriteRepository(), RadioRepository()),),
       ],
       child: MaterialApp(
         title: 'Radiao',
