@@ -5,15 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "radiao",
+            "name": "tuneradio.mobile",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "radiao (profile mode)",
+            "name": "tuneradio.mobile (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
+        },
+        {
+            "name": "tuneradio.mobile (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
         }
     ]
 }

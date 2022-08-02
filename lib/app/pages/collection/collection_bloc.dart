@@ -17,7 +17,7 @@ class CollectionBloc extends Cubit<CollectionState> {
       emit(LoadedState(const [], const []));
       return;
     }
-
+    
     final stations = await _radioRepository.fetchByIds(items.map((e) => e.stationuuid).toList());
     emit(LoadedState(items, stations));
   }

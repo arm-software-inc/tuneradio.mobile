@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:radiao/app/bloc/radio_bloc.dart';
 import 'package:radiao/app/pages/collection/collection_bloc.dart';
@@ -54,7 +52,6 @@ class MyApp extends StatelessWidget {
             ),
             elevation: 0,
           ),
-          fontFamily: GoogleFonts.balooBhaijaan().fontFamily,
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),

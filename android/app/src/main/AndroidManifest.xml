@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
    <application
+        android:name="${applicationName}"
         android:label="radiao"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
