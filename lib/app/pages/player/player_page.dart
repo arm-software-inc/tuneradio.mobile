@@ -107,14 +107,6 @@ class PlayerPageState extends State<PlayerPage> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.fast_rewind,
-            color: Colors.grey,
-          ),
-          iconSize: 54,
-        ),
-        IconButton(
           onPressed: () {
             _blocRadio.play(playingState.station);
           },
@@ -128,14 +120,6 @@ class PlayerPageState extends State<PlayerPage> {
             ),
           ),
           iconSize: 72,
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.fast_forward,
-            color: Colors.grey,
-          ),
-          iconSize: 54,
         ),
       ],
     );
