@@ -21,4 +21,5 @@ class Constants {
   static const String home = "home";
   static const String loading = "carregando...";
   static const String error = "erro";
+  static const String favorites = "Favoritos";
 }

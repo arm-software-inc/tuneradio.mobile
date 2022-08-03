@@ -81,9 +81,7 @@ class PlayerComponentState extends State<PlayerComponent> {
   Widget _cover(String coverUrl) {
     return Container(
       padding: const EdgeInsets.all(5),
-      child: FittedBox(
-        child: coverUrl.isEmpty ? const Icon(Icons.radio) : Image.network(coverUrl),
-      ),
+      child: coverUrl.isEmpty ? const Icon(Icons.radio) : Image.network(coverUrl),
     );
   }
 }

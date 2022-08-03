@@ -6,6 +6,7 @@ import 'package:radiao/app/custom_theme.dart';
 import 'package:radiao/app/pages/collection/collection_bloc.dart';
 import 'package:radiao/app/pages/collection/collection_page.dart';
 import 'package:radiao/app/pages/collection/collections_bloc.dart';
+import 'package:radiao/app/pages/favorite/favorite_page.dart';
 import 'package:radiao/app/pages/main_page.dart';
 import 'package:radiao/app/pages/player/player_page.dart';
 import 'package:radiao/app/repository/collection_item_repository.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
             "/": MaterialPageRoute(builder: (_) => const MainPage()),
             "/player": MaterialPageRoute(builder: (_) => const PlayerPage()),
             "/collection": MaterialPageRoute(builder: (_) => CollectionPage(params: settings.arguments as CollectionPageParams,)),
+            FavoritePage.routeName: MaterialPageRoute(builder: (_) => const FavoritePage()),
           };
 
           return routes[settings.name];

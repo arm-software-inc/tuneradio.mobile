@@ -21,4 +21,11 @@ class FavoriteRepository extends Repository {
 
     return result.isNotEmpty;
   }
+
+  Future<List<String>> fetch() async {
+    final db = await getDb();
+    final result = await db.query("favorite");
+
+    return result.map((e) => e["stationuuid"].toString()).toList();
+  }
 }
