@@ -57,6 +57,8 @@ class RadioBloc extends Cubit<RadioState> {
       _audioPlayer.stop();
       _setUrl(station.urlResolved.isEmpty ? station.url : station.urlResolved);
       _current = station;
+
+      repository.click(station.stationuuid);
     }
 
     _audioPlayer.playing ? _pause() : _play();

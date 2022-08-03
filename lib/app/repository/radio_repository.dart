@@ -21,9 +21,10 @@ class RadioRepository {
     final response =
         await httpBase.get(Uri.parse("$baseUrl/byuuid?uuids=$commaUuids"));
 
-    if (response.statusCode != 200)
+    if (response.statusCode != 200) {
       throw Exception(
           "Algo deu errado: ${response.statusCode} - ${response.reasonPhrase}");
+    }
 
     return convertMapList(jsonDecode(response.body))
         .map<Station>((e) => Station.fromJson(e))
@@ -34,9 +35,10 @@ class RadioRepository {
     final response = await httpBase
         .get(Uri.parse("$baseUrl/topclick?limit=20&hidebroken=true"));
 
-    if (response.statusCode != 200)
+    if (response.statusCode != 200) {
       throw Exception(
           "Algo deu errado: ${response.statusCode} - ${response.reasonPhrase}");
+    }
 
     return convertMapList(jsonDecode(response.body))
         .map<Station>((e) => Station.fromJson(e))
@@ -47,9 +49,10 @@ class RadioRepository {
     final response = await httpBase
         .get(Uri.parse("$baseUrl/topvote?limit=20&hidebroken=true"));
 
-    if (response.statusCode != 200)
+    if (response.statusCode != 200) {
       throw Exception(
           "Algo deu errado: ${response.statusCode} - ${response.reasonPhrase}");
+    }
 
     return convertMapList(jsonDecode(response.body))
         .map<Station>((e) => Station.fromJson(e))
@@ -61,9 +64,10 @@ class RadioRepository {
         Uri.parse("$baseUrl/search?limit=20&hidebroken=true&name=$stationName"),
         cached: false);
 
-    if (response.statusCode != 200)
+    if (response.statusCode != 200) {
       throw Exception(
           "Algo deu errado: ${response.statusCode} - ${response.reasonPhrase}");
+    }
 
     return convertMapList(jsonDecode(response.body))
         .map<Station>((e) => Station.fromJson(e))
@@ -74,9 +78,10 @@ class RadioRepository {
     final response = await httpBase.get(
         Uri.parse("$baseUrl/search?limit=20&hidebroken=true&tag=$tagname"));
 
-    if (response.statusCode != 200)
+    if (response.statusCode != 200) {
       throw Exception(
           "Algo deu errado: ${response.statusCode} - ${response.reasonPhrase}");
+    }
 
     return convertMapList(jsonDecode(response.body))
         .map<Station>((e) => Station.fromJson(e))
@@ -86,13 +91,24 @@ class RadioRepository {
   Future<List<Station>> fetchListeningNow() async {
     final response = await httpBase.get(Uri.parse("$baseUrl/lastclick/5"));
 
-    if (response.statusCode != 200)
+    if (response.statusCode != 200) {
       throw Exception(
           "Algo deu errado: ${response.statusCode} - ${response.reasonPhrase}");
+    }
 
     return convertMapList(jsonDecode(response.body))
         .map<Station>((e) => Station.fromJson(e))
         .toList();
+  }
+
+  Future<void> vote(String stationuuid) async {
+    await httpBase.post(
+        Uri.parse("http://all.api.radio-browser.info/json/vote/$stationuuid"));
+  }
+
+  Future<void> click(String stationuuid) async {
+    await httpBase.post(
+        Uri.parse("http://all.api.radio-browser.info/json/url/$stationuuid"));
   }
 
   List<Map<String, dynamic>> convertMapList(List<dynamic> obj) {

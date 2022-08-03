@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tune_radio/app/bloc/radio_bloc.dart';
 import 'package:tune_radio/app/bloc/radio_state.dart';
+import 'package:tune_radio/app/components/favorite_button/favorite_button_component.dart';
 import 'package:tune_radio/app/components/loading/loading_component.dart';
 import 'package:tune_radio/app/helpers/constants.dart';
 import 'package:tune_radio/app/models/station.dart';
@@ -29,16 +30,7 @@ class PlayerPageState extends State<PlayerPage> {
     _collectionsBloc.fetch();
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-            onPressed: () => _showCollections(),
-            icon: const Icon(Icons.list),
-          ),
-        ],
-      ),
+      appBar: AppBar(),
       backgroundColor: Theme.of(context).backgroundColor,
       body: _content(),
     );
@@ -54,6 +46,7 @@ class PlayerPageState extends State<PlayerPage> {
               _station = state.station;
               return Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AspectRatio(
                     aspectRatio: 10 / 9,
@@ -82,19 +75,7 @@ class PlayerPageState extends State<PlayerPage> {
                       style: const TextStyle(color: Colors.grey),
                     ),
                   ),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                        size: 32,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(_station.votes.toString()),
-                    ],
-                  ),
+                  Text("${_station.votes} curtidas"),
                   _controls(state),
                 ],
               );
@@ -113,22 +94,28 @@ class PlayerPageState extends State<PlayerPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        IconButton(
-          onPressed: () {
-            _blocRadio.play(playingState.station);
-          },
-          icon: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(42),
-            ),
-            child: Icon(
+        Expanded(
+          child: IconButton(
+            onPressed: () => _showCollections(),
+            icon: const Icon(Icons.playlist_add),
+          ),
+        ),
+        Expanded(
+          child: IconButton(
+            onPressed: () {
+              _blocRadio.play(playingState.station);
+            },
+            icon: Icon(
               playingState.playing
                   ? Icons.pause_rounded
                   : Icons.play_arrow_rounded,
               color: Colors.white,
             ),
+            iconSize: 72,
           ),
-          iconSize: 72,
+        ),
+        Expanded(
+          child: FavoriteButtonComponent(station: _station),
         ),
       ],
     );

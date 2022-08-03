@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tune_radio/app/bloc/radio_bloc.dart';
+import 'package:tune_radio/app/components/favorite_button/bloc/favorite_button_bloc.dart';
 import 'package:tune_radio/app/custom_theme.dart';
 import 'package:tune_radio/app/pages/collection/collection_bloc.dart';
 import 'package:tune_radio/app/pages/collection/collection_page.dart';
@@ -9,6 +10,7 @@ import 'package:tune_radio/app/pages/main_page.dart';
 import 'package:tune_radio/app/pages/player/player_page.dart';
 import 'package:tune_radio/app/repository/collection_item_repository.dart';
 import 'package:tune_radio/app/repository/collection_repository.dart';
+import 'package:tune_radio/app/repository/favorite_repository.dart';
 import 'package:tune_radio/app/repository/radio_repository.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -37,9 +39,13 @@ class MyApp extends StatelessWidget {
         Provider(
             create: (_) =>
                 CollectionBloc(CollectionItemRepository(), RadioRepository())),
+        Provider(
+          create: (context) =>
+              FavoriteButtonBloc(FavoriteRepository(), RadioRepository()),
+        ),
       ],
       child: MaterialApp(
-        title: 'tune_radio',
+        title: 'Radiao',
         theme: CustomTheme.defaultTheme(),
         initialRoute: "/",
         onGenerateRoute: (settings) {

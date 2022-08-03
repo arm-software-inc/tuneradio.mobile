@@ -15,8 +15,9 @@ class HttpCached extends http.BaseClient {
   Future<http.Response> get(Uri url,
       {Map<String, String>? headers, bool cached = true}) async {
     final cachedResponse = await _cacheHelper.getCache(url.toString());
-    if (cachedResponse.isNotEmpty && cached)
+    if (cachedResponse.isNotEmpty && cached) {
       return _ResponseExtensions.fromMap(cachedResponse["object"]);
+    }
 
     final response = await super.get(url, headers: headers);
     _cacheHelper.addCache(url.toString(), response.toMap());
