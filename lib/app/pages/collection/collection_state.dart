@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:radiao/app/models/station.dart';
-import 'package:radiao/app/models/station_collection_item.dart';
+import 'package:tune_radio/app/models/station.dart';
+import 'package:tune_radio/app/models/station_collection_item.dart';
 
 abstract class CollectionState extends Equatable {}
 

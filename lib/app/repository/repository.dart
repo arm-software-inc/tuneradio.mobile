@@ -1,4 +1,4 @@
-import 'package:radiao/app/helpers/sqlite_helper.dart';
+import 'package:tune_radio/app/helpers/sqlite_helper.dart';
 import 'package:sqflite/sqflite.dart';
 
 abstract class Repository {

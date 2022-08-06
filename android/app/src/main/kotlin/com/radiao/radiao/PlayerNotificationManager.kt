@@ -1,4 +1,4 @@
-package com.radiao.radiao
+package com.tune_radio.tune_radio
 
 import android.app.Notification
 import android.app.NotificationChannel

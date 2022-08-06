@@ -1,4 +1,4 @@
-package com.radiao.radiao
+package com.tune_radio.tune_radio
 
 import android.app.PendingIntent
 import android.content.Context

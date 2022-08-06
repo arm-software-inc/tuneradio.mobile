@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:radiao/app/bloc/radio_bloc.dart';
-import 'package:radiao/app/models/station.dart';
+import 'package:tune_radio/app/bloc/radio_bloc.dart';
+import 'package:tune_radio/app/models/station.dart';
 
 class StationListItemComponent extends StatelessWidget {
   const StationListItemComponent({Key? key, required this.station})

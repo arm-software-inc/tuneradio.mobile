@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:radiao/app/components/player/player_component.dart';
-import 'package:radiao/app/helpers/constants.dart';
-import 'package:radiao/app/pages/collection/collections_page.dart';
-import 'package:radiao/app/pages/explorer/explorer_page.dart';
-import 'package:radiao/app/pages/home/home_page.dart';
+import 'package:tune_radio/app/components/player/player_component.dart';
+import 'package:tune_radio/app/helpers/constants.dart';
+import 'package:tune_radio/app/pages/collection/collections_page.dart';
+import 'package:tune_radio/app/pages/explorer/explorer_page.dart';
+import 'package:tune_radio/app/pages/home/home_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);

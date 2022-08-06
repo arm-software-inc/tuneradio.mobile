@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:radiao/app/components/loading/loading_component.dart';
-import 'package:radiao/app/components/player/player_component.dart';
-import 'package:radiao/app/components/station_card/station_card_component.dart';
-import 'package:radiao/app/helpers/constants.dart';
-import 'package:radiao/app/models/station.dart';
-import 'package:radiao/app/pages/collection/collection_bloc.dart';
-import 'package:radiao/app/pages/collection/collection_state.dart';
-import 'package:radiao/app/pages/collection/collections_bloc.dart';
+import 'package:tune_radio/app/components/loading/loading_component.dart';
+import 'package:tune_radio/app/components/player/player_component.dart';
+import 'package:tune_radio/app/components/station_card/station_card_component.dart';
+import 'package:tune_radio/app/helpers/constants.dart';
+import 'package:tune_radio/app/models/station.dart';
+import 'package:tune_radio/app/pages/collection/collection_bloc.dart';
+import 'package:tune_radio/app/pages/collection/collection_state.dart';
+import 'package:tune_radio/app/pages/collection/collections_bloc.dart';
 
 class CollectionPage extends StatefulWidget {
   final CollectionPageParams params;
 
-  const CollectionPage({ Key? key, required this.params, }) : super(key: key);
+  const CollectionPage({
+    Key? key,
+    required this.params,
+  }) : super(key: key);
 
   @override
   CollectionPageState createState() => CollectionPageState();
@@ -28,17 +31,20 @@ class CollectionPageState extends State<CollectionPage> {
     _bloc = context.read<CollectionBloc>();
     _bloc.fetch(widget.params.collectionId);
 
-    return Scaffold (
+    return Scaffold(
       appBar: AppBar(
         title: Text(widget.params.collectionName),
         actions: [
           IconButton(
-            onPressed: () => _showEditCollection(), 
+            onPressed: () => _showEditCollection(),
             icon: const Icon(Icons.edit),
           ),
           IconButton(
-            onPressed: () => _showDeleteCollection(), 
-            icon: const Icon(Icons.delete, color: Colors.red,),
+            onPressed: () => _showDeleteCollection(),
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.red,
+            ),
           ),
         ],
       ),
@@ -89,21 +95,23 @@ class CollectionPageState extends State<CollectionPage> {
   }
 
   _showEditCollection() {
-    final textController = TextEditingController(text: widget.params.collectionName);
+    final textController =
+        TextEditingController(text: widget.params.collectionName);
     showDialog(
-      context: context, 
+      context: context,
       builder: (_) => AlertDialog(
         title: const Text(Constants.editCollection),
         actions: [
           TextButton(
             onPressed: () {
-              _collectionsBloc.update(widget.params.collectionId, textController.text);
+              _collectionsBloc.update(
+                  widget.params.collectionId, textController.text);
               Navigator.of(context).popUntil((route) => route.isFirst);
-            }, 
+            },
             child: const Text(Constants.ok),
           ),
           TextButton(
-            onPressed: () => Navigator.of(context).pop(), 
+            onPressed: () => Navigator.of(context).pop(),
             child: const Text(Constants.cancel),
           ),
         ],
@@ -117,7 +125,7 @@ class CollectionPageState extends State<CollectionPage> {
 
   _showDeleteCollection() {
     showDialog(
-      context: context, 
+      context: context,
       builder: (_) => AlertDialog(
         actions: [
           TextButton(
@@ -129,7 +137,10 @@ class CollectionPageState extends State<CollectionPage> {
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text(Constants.no, style: TextStyle(color: Colors.red),),
+            child: const Text(
+              Constants.no,
+              style: TextStyle(color: Colors.red),
+            ),
           ),
         ],
         title: const Text(Constants.deleteCollectionConfirm),
@@ -139,7 +150,8 @@ class CollectionPageState extends State<CollectionPage> {
 
   final snackbar = const SnackBar(
     duration: Duration(seconds: 2),
-    content: Text(Constants.stationCollectionRemoved, style: TextStyle(color: Colors.white)),
+    content: Text(Constants.stationCollectionRemoved,
+        style: TextStyle(color: Colors.white)),
   );
 }
 

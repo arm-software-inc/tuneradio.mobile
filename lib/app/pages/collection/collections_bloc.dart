@@ -1,15 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:radiao/app/models/station_collection.dart';
-import 'package:radiao/app/models/station_collection_item.dart';
-import 'package:radiao/app/pages/collection/collections_state.dart';
-import 'package:radiao/app/repository/collection_item_repository.dart';
-import 'package:radiao/app/repository/collection_repository.dart';
+import 'package:tune_radio/app/models/station_collection.dart';
+import 'package:tune_radio/app/models/station_collection_item.dart';
+import 'package:tune_radio/app/pages/collection/collections_state.dart';
+import 'package:tune_radio/app/repository/collection_item_repository.dart';
+import 'package:tune_radio/app/repository/collection_repository.dart';
 
 class CollectionsBloc extends Cubit<CollectionsState> {
   final CollectionRepository _repository;
   final CollectionItemRepository _itemRepository;
 
-  CollectionsBloc(this._repository, this._itemRepository) : super(InitialState());
+  CollectionsBloc(this._repository, this._itemRepository)
+      : super(InitialState());
 
   void fetch() async {
     emit(LoadingState());
@@ -31,13 +32,15 @@ class CollectionsBloc extends Cubit<CollectionsState> {
 
   void update(int collectionId, String collectionName) async {
     emit(LoadingState());
-    await _repository.update(StationCollection(id: collectionId, name: collectionName));
+    await _repository
+        .update(StationCollection(id: collectionId, name: collectionName));
     fetch();
   }
 
   void addStation(int collectionId, String stationuuid) async {
     await _itemRepository.removeStation(stationuuid);
-    await _itemRepository.create(StationCollectionItem(collectionId: collectionId, stationuuid: stationuuid));
+    await _itemRepository.create(StationCollectionItem(
+        collectionId: collectionId, stationuuid: stationuuid));
   }
 
   void removeStation(String stationuuid) async {

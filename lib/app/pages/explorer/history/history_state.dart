@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:radiao/app/models/history.dart';
+import 'package:tune_radio/app/models/history.dart';
 
 abstract class HistoryState extends Equatable {}
 

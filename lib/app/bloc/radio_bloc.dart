@@ -1,16 +1,17 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:radiao/app/bloc/radio_state.dart';
-import 'package:radiao/app/helpers/notification_helper.dart';
-import 'package:radiao/app/models/station.dart';
-import 'package:radiao/app/repository/radio_repository.dart';
+import 'package:tune_radio/app/bloc/radio_state.dart';
+import 'package:tune_radio/app/helpers/notification_helper.dart';
+import 'package:tune_radio/app/models/station.dart';
+import 'package:tune_radio/app/repository/radio_repository.dart';
 
-class RadioBloc extends Cubit<RadioState> {  
+class RadioBloc extends Cubit<RadioState> {
   static const String playerEventChannel = "playerActions";
 
   RadioRepository repository;
-  Station _current = Station(changeuuid: "", stationuuid: "", name: "", url: "");
+  Station _current =
+      Station(changeuuid: "", stationuuid: "", name: "", url: "");
 
   final _audioPlayer = AudioPlayer();
 
@@ -32,7 +33,7 @@ class RadioBloc extends Cubit<RadioState> {
           break;
         case ProcessingState.ready:
           emit(PlayingState(event.playing, _current));
-          
+
           if (_isLoaded) {
             NotificationHelper.notifyPlayState(event.playing);
           } else {
@@ -48,7 +49,7 @@ class RadioBloc extends Cubit<RadioState> {
 
     _audioPlayer.volumeStream.listen((event) {
       emit(VolumeState(event));
-     });
+    });
   }
 
   void play(Station station) async {
@@ -94,5 +95,4 @@ class RadioBloc extends Cubit<RadioState> {
       _audioPlayer.playing ? _pause() : _play();
     });
   }
-
 }

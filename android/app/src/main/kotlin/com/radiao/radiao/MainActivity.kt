@@ -1,4 +1,4 @@
-package com.radiao.radiao
+package com.tune_radio.tune_radio
 
 import android.content.*
 import android.os.*
@@ -11,7 +11,7 @@ import io.flutter.plugin.common.MethodChannel
 import java.io.Serializable
 
 class MainActivity : FlutterActivity() {
-    private val CHANNEL = "com.radiao/not"
+    private val CHANNEL = "com.tune_radio/not"
     private val PLAYER_EVENT_CHANNEL = "playerActions"
     private val TAG = "PLAYER-NOTIFICATION"
 

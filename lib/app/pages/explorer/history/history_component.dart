@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:radiao/app/helpers/constants.dart';
-import 'package:radiao/app/pages/explorer/history/history_bloc.dart';
-import 'package:radiao/app/pages/explorer/history/history_state.dart';
-import 'package:radiao/app/repository/history_repository.dart';
+import 'package:tune_radio/app/helpers/constants.dart';
+import 'package:tune_radio/app/pages/explorer/history/history_bloc.dart';
+import 'package:tune_radio/app/pages/explorer/history/history_state.dart';
+import 'package:tune_radio/app/repository/history_repository.dart';
 
 class HistoryComponent extends StatelessWidget {
   const HistoryComponent({Key? key}) : super(key: key);
